@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Predict Room Price</h2>
+    <form method="POST">
+        <label for="room_type">Room Type:</label>
+        <select id="room_type" name="room_type" required>
+            <option value="Standard">Standard</option>
+            <option value="Deluxe">Deluxe</option>
+            <option value="Suite">Suite</option>
+            <option value="Private">Private</option>
+        </select>
+
+        <label for="sea_facing">Sea Facing:</label>
+        <select id="sea_facing" name="sea_facing" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="jacuzzi">Jacuzzi:</label>
+        <select id="jacuzzi" name="jacuzzi" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <label for="balcony">Balcony:</label>
+        <select id="balcony" name="balcony" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="bed_type">Bed Type:</label>
+        <select id="bed_type" name="bed_type" required>
+            <option value="King">King</option>
+            <option value="Queen">Queen</option>
+            <option value="Double">Double</option>
+        </select>
+
+        <label for="technology">In-Room Technology:</label>
+        <select id="technology" name="technology" required>
+            <option value="Smart TV">Smart TV</option>
+            <option value="Standard TV">Standard TV</option>
+        </select>
+
+        <label for="season">Season:</label>
+        <select id="season" name="season" required>
+            <option value="Peak">Peak</option>
+            <option value="Off-Peak">Off-Peak</option>
+        </select>
+
+        <label for="floor_level">Floor Level:</label>
+        <input type="number" id="floor_level" name="floor_level" required>
+
+        <button type="submit">Predict Price</button>
+    </form>
+{% endblock %}

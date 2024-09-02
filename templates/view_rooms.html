@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Available Rooms</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Sea Facing</th>
+                <th>Jacuzzi</th>
+                <th>Balcony</th>
+                <th>Bed</th>
+                <th>In room technology</th>
+                <th>Season</th>
+                <th>Floor</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+                <tr>
+                    <td>{{ room.id }}</td>
+                    <td>{{ room.room_type }}</td>
+                    <td>Rs{{ room.room_price }}</td>
+                    <td>{{ 'Yes' if room.sea_facing else 'No' }}</td>
+                    <td>{{ 'Yes' if room.jacuzzi else 'No' }}</td>
+                    <td>{{ 'Yes' if room.balcony else 'No' }}</td>
+                    <td>{{ room.bed_type }}</td>
+                    <td>{{ room.technology }}</td>
+                    <td>{{ room.season }}</td>
+                    <td>{{ room.floor_level }}</td>
+                    <td><a href="{{ url_for('book_room', room_id=room.id) }}">Book Now</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

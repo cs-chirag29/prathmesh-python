@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Booked Rooms</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Sea Facing</th>
+                <th>Jacuzzi</th>
+                <th>Balcony</th>
+                <th>Bed Type</th>
+                <th>In-Room Technology</th>
+                <th>Season</th>
+                <th>Floor Level</th>
+                <th>Guest Name</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+                <tr>
+                    <td>{{ room.id }}</td>
+                    <td>{{ room.room_type }}</td>
+                    <td>Rs {{ room.room_price }}</td>
+                    <td>{{ 'Yes' if room.sea_facing == 'Yes' else 'No' }}</td>
+                    <td>{{ 'Yes' if room.jacuzzi == 'Yes' else 'No' }}</td>
+                    <td>{{ 'Yes' if room.balcony == 'Yes' else 'No' }}</td>
+                    <td>{{ room.bed_type }}</td>
+                    <td>{{ room.technology }}</td>
+                    <td>{{ room.season }}</td>
+                    <td>{{ room.floor_level }}</td>
+
+                    <!-- Find the corresponding booking for this room -->
+                    {% set booking = bookings | selectattr('room_id', 'equalto', room.id) | first %}
+                    <td>{{ booking.guest_name if booking else 'N/A' }}</td>
+                    <td>{{ booking.date if booking else 'N/A' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

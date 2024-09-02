@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Book Room #{{ room.id }}</h2>
+    <form method="POST">
+        <label for="guest_name">Guest Name:</label>
+        <input type="text" id="guest_name" name="guest_name" required>
+        
+        <label for="date">Booking Date:</label>
+        <input type="date" id="date" name="date" required>
+        
+        <button type="submit">Book Room</button>
+    </form>
+{% endblock %}
